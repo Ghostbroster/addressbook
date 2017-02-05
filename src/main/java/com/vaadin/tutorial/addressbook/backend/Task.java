@@ -1,4 +1,4 @@
-package com.vaadin.tutorial.addressbook.backend;
+package com.vaadin.tutorial.todo_tasks.backend;
 
 import org.apache.commons.beanutils.BeanUtils;
 
@@ -13,7 +13,7 @@ import java.util.Date;
  */
 // Backend DTO class. This is just a typical Java backend implementation
 // class and nothing Vaadin specific.
-public class Contact implements Serializable, Cloneable {
+public class Task implements Serializable, Cloneable {
 
     private Long id;
 
@@ -21,7 +21,9 @@ public class Contact implements Serializable, Cloneable {
     private String lastName = "";
     private String phone = "";
     private String email = "";
-    private Date birthDate;
+    private String taskDescription = "";
+    private Date startDate;
+    private Date expectedEndDate;
 
     public Long getId() {
         return id;
@@ -62,19 +64,35 @@ public class Contact implements Serializable, Cloneable {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    public Date getBirthDate() {
-        return birthDate;
+    
+    public String getTaskDescription() {
+    	return taskDescription;
     }
-
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
+    
+    public void setTaskDescription(String taskDescription){
+    	this.taskDescription = taskDescription;
+    }
+    
+    public Date getStartDate() {
+    	return startDate;
+    }
+    
+    public void setStartDate(Date startDate){
+    	this.startDate = startDate;
+    }
+    
+    public Date getExpectedEndDate() {
+    	return expectedEndDate;
+    }
+    
+    public void setExpectedEndDate(Date expectedEndDate){
+    	this.expectedEndDate = expectedEndDate;
     }
 
     @Override
-    public Contact clone() throws CloneNotSupportedException {
+    public Task clone() throws CloneNotSupportedException {
         try {
-            return (Contact) BeanUtils.cloneBean(this);
+            return (Task) BeanUtils.cloneBean(this);
         } catch (Exception ex) {
             throw new CloneNotSupportedException();
         }
@@ -82,9 +100,9 @@ public class Contact implements Serializable, Cloneable {
 
     @Override
     public String toString() {
-        return "Contact{" + "id=" + id + ", firstName=" + firstName
-                + ", lastName=" + lastName + ", phone=" + phone + ", email="
-                + email + ", birthDate=" + birthDate + '}';
+        return "Task{" + "id=" + id + ", firstName=" + firstName + ", lastName=" + lastName 
+        		+ ", Task=" + taskDescription + ", startDate=" + startDate + ", expectedEndDate=" + expectedEndDate 
+        		+ ", phone=" + phone + ", email=" + email + '}';
     }
 
 }
